@@ -17,6 +17,11 @@ class ViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         let post = posts[indexPath.row]
         cell.summarylabel.text = post.summary
+        if let photo = post.photos.first {
+                    Nuke.loadImage(with: photo.originalSize.url, into: cell.postImage)
+        } else {
+                cell.postImage.image = UIImage(named: "placeholder") // Use a default image if no photo
+        }
         return cell
     }
     
@@ -25,6 +30,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
 
         tableView.dataSource = self
         fetchPosts()

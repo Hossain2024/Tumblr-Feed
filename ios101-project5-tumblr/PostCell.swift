@@ -15,6 +15,11 @@ class PostCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        summarylabel.numberOfLines = 0
+//        summarylabel.lineBreakMode = .byWordWrapping
+//            
+//            postImage.contentMode = .scaleAspectFill
+//            postImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
